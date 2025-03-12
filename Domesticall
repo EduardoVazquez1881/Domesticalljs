@@ -1,0 +1,7 @@
+-- Instalar todas las dependencias de un proyecto
+npm install
+
+-- Instalar prisma
+npm i prisma -D
+npx prisma init
+- Se crea una carpeta llamada prisma que contiene la informacion de la conexion
