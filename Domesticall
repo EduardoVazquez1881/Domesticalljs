@@ -10,6 +10,15 @@ npx prisma init
 - Se crea una carpeta llamada prisma que contiene la informacion de la conexion
 - Al modificar el archivo "schema.prisma" tenemos que hacer una migracion mediante el comando en terminal: 
 * npx prisma migrate dev --name init
+- Si queremos sincrozar la base de datos con las migraciones actuales ejecutamos el comando:
+* npx prisma migrate deploy
+- Restablecer las migraciones:
+ * npx prisma migrate reset
 
 - En la ruta src/libs/primsa.ts
 Next por cada consulta a la base de datos obtiene la conexion de nuevo, entonces es necesario agregar para mentener mantener un rendimiento estable
+
+
+-- REACT HOOK
+* npm i react-hook-form
+Documentacion de componentes: https://react-hook-form.com/docs

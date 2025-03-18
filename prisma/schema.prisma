@@ -14,10 +14,11 @@ datasource db {
 }
 
 model USER {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   email String @unique
   username String @unique
-  password String 
-  rol String @unique
+  password String
+  rol String @default("user")
   createdDT DateTime @default(now())
+  profilePicture String @default("/images/userDefault.png")
 }
