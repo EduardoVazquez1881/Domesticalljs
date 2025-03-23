@@ -22,3 +22,14 @@ Next por cada consulta a la base de datos obtiene la conexion de nuevo, entonces
 -- REACT HOOK
 * npm i react-hook-form
 Documentacion de componentes: https://react-hook-form.com/docs
+
+
+-- Encriptaciones
+* npm i bcrypt
+
+-- Login
+* npm i next-auth
+
+
+-- Autocompletado en typescrips
+rfce

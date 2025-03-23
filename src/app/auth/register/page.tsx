@@ -2,11 +2,17 @@
 import { useForm } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+
+import { useRouter } from 'next/navigation';
 
 export default function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const router = useRouter();
+
 
     const onSubmit = handleSubmit(async (data) => {
+        
         if (data.password !== data.confirmPassword) {
             return alert('Passwords do not match');
         }
@@ -26,6 +32,11 @@ export default function RegisterPage() {
         if (!res.ok) {
             const error = await res.json();
             return alert(error.message || 'Something went wrong');
+        }
+
+        if (res.ok)
+        {
+            router.push('/auth/login')
         }
 
         const resJSON = await res.json();
@@ -105,9 +116,9 @@ export default function RegisterPage() {
                     </span>
                 )}
 
-                <button type="submit" className='p-3 bg-blue-600 w-full text-white rounded mt-2'>
+                <Button type="submit">
                     Register
-                </button>
+                </Button>
             </form>
         </div>
     );
