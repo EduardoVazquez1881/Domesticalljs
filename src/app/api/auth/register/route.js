@@ -53,7 +53,8 @@ export async function POST(request) {
         });
 
         // Almacena los datos en user y excluye la contraseña para no mostrarla en la consola de la web
-        const {password: _, ...user} = newUser;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const {password:_, ...user} = newUser;
 
         // Envia los datos de user a la web
         return NextResponse.json(user);

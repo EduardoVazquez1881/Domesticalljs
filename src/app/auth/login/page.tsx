@@ -8,29 +8,32 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
-  const onSubmit = async (data: any) => {
-    const result = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false, // Evita la redirección automática para manejar errores
+const onSubmit = handleSubmit(async (data) => {
+    const res = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false, // Evita la redirección automática para manejar errores
     });
 
-    if (result?.error) {
-      setErrorMessage("Correo o contraseña incorrectos");
+    if (res?.error) {
+        setErrorMessage(res.error);
     } else {
-      router.push("/dashboard"); // Redirige a una página después del login
+        router.push("/dashboard"); // Redirige a una página después del login
     }
-  };
+});
 
   return (
     <div className="h-[calc(100vh-10rem)] flex items-center justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-800 p-6 rounded-lg shadow-md w-96">
-        <h1 className="text-white text-center p-4 text-2xl font-bold">Login</h1>
+      <form onSubmit={onSubmit}  className='w-96 p-8 rounded-lg text-white flex flex-col border border-black shadow-md bg-gradient-to-r from-gray-900 from-10% via-neutral-800 via-30% via-zinc-900 via-60% to-stone-900 to-90% hover:border-rose-500 hover:scale-105 transition-all'>
 
+        <div className="flex justify-center space-x-4 mb-8">
+            <a href="/auth/register" className="p-4 text-xl font-bold text-center text-slate-700 hover:text-white hover:border-b-2 hover:border-rose-500 transition-all">Sign in</a>
+            <a href="/auth/login " className="p-4 text-xl font-bold text-center border-b-2 border-rose-500">Sign up</a>
+        </div>
         {errorMessage && <p className="text-red-500 text-center">{errorMessage}</p>}
 
         <Label htmlFor="email">Email</Label>
@@ -61,6 +64,7 @@ export default function LoginPage() {
           </span>
         )}
 
+        <a href="/auth/forgot-password" className="text-slate-500 mb-2 block text-sm hover:text-rose-500 transition-all mt-2">Forgot password?</a>
 
         <Button type="submit">Iniciar sesión</Button>
       </form>

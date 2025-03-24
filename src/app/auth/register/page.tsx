@@ -45,9 +45,12 @@ export default function RegisterPage() {
 
     return (
         <div className='h-[calc(100vh-10rem)] flex items-center justify-center'>
-            <form onSubmit={onSubmit} className='w-1/4'>
-                <h1 className='text-white text-center p-4 text-2xl font-bold'>Register</h1>
-
+            <form onSubmit={onSubmit} className='w-96 p-8 rounded-lg text-white flex flex-col border border-black shadow-md bg-gradient-to-r from-gray-900 from-10% via-neutral-800 via-30% via-zinc-900 via-60% to-stone-900 to-90% hover:border-rose-500 hover:scale-105 transition-all'>
+            <div className="flex justify-center space-x-4 mb-8">
+                <a href="/auth/register" className="p-4 text-xl font-bold text-white  text-center border-b-2 border-rose-500">Sign in</a>
+                <a href="/auth/login" className="p-4 text-xl font-bold text-center  text-slate-700 hover:text-white hover:border-b-2 hover:border-rose-500 transition-all">Sign up</a>
+            </div>
+            
                 <Label htmlFor='username'>Username</Label>
                 <Input
                     type="text"

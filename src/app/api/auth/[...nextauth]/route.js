@@ -11,7 +11,7 @@ export const authOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         console.log(credentials);
 
         const userFound = await prisma.USER.findUnique({
@@ -20,13 +20,13 @@ export const authOptions = {
           }
         });
 
-        if(!userFound) return null
+        if(!userFound) throw new Error("User not found")
 
         console.log("El error es",userFound)
 
         const matchPassword = await bcrypt.compare(credentials.password, userFound.password)
 
-        if(!matchPassword) return null
+        if(!matchPassword) throw new Error("Password incorrect");
 
         return{
           id: userFound.id,

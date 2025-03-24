@@ -33,3 +33,9 @@ Documentacion de componentes: https://react-hook-form.com/docs
 
 -- Autocompletado en typescrips
 rfce
+
+-- .env
+DATABASE_URL="mysql://usuario_mysql:contraseña_mysql@localhost:3306/nombre_BD"
+
+NEXTAUTH_SECRET="windows: node -e "console.log(require('crypto').randomBytes(32).toString('hex')) | Linux: openssl rand -hex 32" 
+NEXTAUTH_URL="http://localhost:3000"

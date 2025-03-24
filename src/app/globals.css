@@ -1,5 +1,61 @@
 @import "tailwindcss";
 
-body{
-    @apply bg-gray-950;
+/* Animación sutil con pequeños cambios de posición */
+@keyframes subtleMove {
+    0%, 100% {
+        --x-0: 85%;
+        --y-0: 80%;
+        --x-1: 60%;
+        --y-1: 24%;
+        --x-2: 13%;
+        --y-2: 82%;
+        --x-3: 24%;
+        --y-3: 7%;
+    }
+    
+    50% {
+        --x-0: 83%;
+        --y-0: 78%;
+        --x-1: 62%;
+        --y-1: 26%;
+        --x-2: 15%;
+        --y-2: 80%;
+        --x-3: 26%;
+        --y-3: 9%;
+    }
+}
+
+/* Aseguramos que el html y body cubran toda la ventana */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    /* Colores más oscuros */
+    --c-0: rgb(107, 64, 163); /* Púrpura más oscuro */
+    --c-1: rgb(156, 31, 90); /* Rojo oscuro */
+    --c-2: hsla(54, 68%, 38%, 0.35); /* Amarillo más oscuro y transparente */
+    --c-3: rgb(178, 30, 180); /* Púrpura oscuro */
+
+    background-color: rgb(60, 60, 85); /* Fondo base mucho más oscuro, casi negro */
+    background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) 9%, transparent 55%),
+                      radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) 5%, transparent 72%),
+                      radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) 5%, transparent 52%),
+                      radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) 13%, transparent 68%);
+
+    background-size: cover;
+    background-attachment: fixed;
+    animation: subtleMove 15s ease-in-out infinite;
+    background-blend-mode: normal;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+#app, .container, main {
+    min-height: 100vh;
 }
